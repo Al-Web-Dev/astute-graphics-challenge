@@ -1,4 +1,16 @@
 <template>
+  <!-- filer bar grid -->
+
+  <div
+    class="grid grid-cols-[120px_2fr_60px_60px_200px] items-center px-5 py-1 border-b text-sm text-gray-600"
+  >
+    <input type="checkbox" class="justify-self-start" />
+    <span class="font-medium">File name</span>
+    <span>Kind</span>
+    <span>Size</span>
+    <span>Added / Modified</span>
+  </div>
+
   <div
     v-for="asset in assets"
     :key="asset.id"

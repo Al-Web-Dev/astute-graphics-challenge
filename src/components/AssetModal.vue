@@ -1,55 +1,65 @@
 <template>
   <div
     v-if="show"
-    class="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+    class="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
   >
-    <!-- modal content -->
-    <div
-      class="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+    <!-- Close button top-right -->
+    <button
+      @click="$emit('close')"
+      class="absolute top-4 right-4 text-white text-2xl hover:text-gray-300"
+      aria-label="Close modal"
     >
-      <!-- Close button -->
-      <button
-        @click="$emit('close')"
-        class="absolute top-4 left-4 text-white text-2xl z-50"
-        aria-label="Close modal"
-      >
-        ✕
-      </button>
+      ✕
+    </button>
 
-      <!-- Scroll arrows (left/right placeholders) -->
-      <div
-        class="absolute left-0 top-1/2 transform -translate-y-1/2 text-white text-4xl px-4 cursor-pointer select-none"
-      >
-        ‹
-      </div>
-      <div
-        class="absolute right-0 top-1/2 transform -translate-y-1/2 text-white text-4xl px-4 cursor-pointer select-none"
-      >
-        ›
-      </div>
-
-      <!-- Image container -->
-      <div class="relative">
-        <img
-          :src="asset.image_path"
-          :alt="asset.image_name || 'Asset ' + asset.id"
-          class="max-h-[80vh] max-w-[80vw] object-contain rounded"
-        />
-
-        <!-- File name and icons overlay -->
-        <div
-          class="absolute top-4 left-1/2 transform -translate-x-1/2 flex items-center gap-4 bg-black/50 px-3 py-1 rounded"
-        >
-          <p class="text-white text-sm font-semibold">
-            {{ asset.image_name || asset.image_path.split('/').pop() }}
+    <div class="relative flex flex-col items-start max-w-[90vw] max-h-[80vh]">
+      <!-- File info above the image, left-aligned to image -->
+      <div class="flex items-center w-[100%]">
+        <div>
+          <p class="text-white text-lg font-semibold">
+            {{ asset.image_path.split('/').pop() }}
           </p>
+        </div>
+
+        <div class="flex items-center ml-auto">
           <button class="text-white hover:text-orange-500">
             <FontAwesomeIcon :icon="['far', 'heart']" />
           </button>
+
+          <!-- Download icon -->
           <button class="text-white hover:text-gray-300">
-            <img src="../../assets/Download.svg" alt="Download" class="w-5" />
+            <img
+              src="../assets/Download.svg"
+              alt="Download"
+              class="filter brightness-0 invert"
+            />
           </button>
         </div>
+
+        <!-- Heart icon -->
+      </div>
+
+      <!-- Image + scroll arrows -->
+      <div class="relative flex items-center justify-center w-full">
+        <!-- Left arrow -->
+        <div
+          class="absolute left-[-3rem] top-1/2 transform -translate-y-1/2 text-white text-6xl cursor-pointer select-none"
+        >
+          ‹
+        </div>
+
+        <!-- Right arrow -->
+        <div
+          class="absolute right-[-3rem] top-1/2 transform -translate-y-1/2 text-white text-6xl cursor-pointer select-none"
+        >
+          ›
+        </div>
+
+        <img
+          :src="asset.image_path"
+          :alt="asset.image_name || 'Asset ' + asset.id"
+          class="max-h-[80vh] object-contain"
+        />
       </div>
     </div>
   </div>

@@ -18,29 +18,28 @@
         </h2>
       </div>
 
-      <div class="grid grid-cols-4">
-        <div class="col-span-3 bg-white">
+      <div class="grid grid-cols-9">
+        <div class="col-span-6 bg-white">
           <h3 class="font-semibold text-xl m-5">Astute Manager Pro Projects</h3>
           <div class="m-5 border-b flex justify-between h-12">
             <div class="flex items-end">
-              <button class="btn-primary uppercase mr-2 tab-buttons">
+              <button class="btn btn-primary uppercase mr-2 tab-buttons">
                 active projects
               </button>
-              <button class="btn-primary uppercase btn_grey-out tab-buttons">
+              <button
+                class="btn btn-primary uppercase btn_grey-out tab-buttons"
+              >
                 archived projects
               </button>
             </div>
             <div>
-              <button class="btn-primary flex gap-2">
-                <svg
-                  class="size-5 mr-1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 640 640"
-                >
-                  <path
-                    d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM296 408L296 344L232 344C218.7 344 208 333.3 208 320C208 306.7 218.7 296 232 296L296 296L296 232C296 218.7 306.7 208 320 208C333.3 208 344 218.7 344 232L344 296L408 296C421.3 296 432 306.7 432 320C432 333.3 421.3 344 408 344L344 344L344 408C344 421.3 333.3 432 320 432C306.7 432 296 421.3 296 408z"
-                  />
-                </svg>
+              <button
+                class="group btn btn-primary flex items-center gap-2 transition bg-orange-500 border border-orange-500 text-white hover:bg-white hover:text-orange-500"
+              >
+                <FontAwesomeIcon
+                  :icon="['fas', 'circle-plus']"
+                  class="text-white transition group-hover:text-orange-500"
+                />
                 New Project
               </button>
             </div>
@@ -61,32 +60,28 @@
           </div>
           <!-- New Folder, upload & Search Bar -->
           <div class="m-5 flex gap-2">
-            <button class="btn-primary flex gap-2">
-              <svg
-                class="size-5 mr-1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 640"
-              >
-                <path
-                  d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM296 408L296 344L232 344C218.7 344 208 333.3 208 320C208 306.7 218.7 296 232 296L296 296L296 232C296 218.7 306.7 208 320 208C333.3 208 344 218.7 344 232L344 296L408 296C421.3 296 432 306.7 432 320C432 333.3 421.3 344 408 344L344 344L344 408C344 421.3 333.3 432 320 432C306.7 432 296 421.3 296 408z"
-                />
-              </svg>
+            <button
+              class="btn group flex items-center gap-2 border border-gray-300 bg-white px-4 py-2 text-gray-500 transition hover:border-orange-500 hover:text-orange-500"
+            >
+              <FontAwesomeIcon
+                :icon="['fas', 'circle-plus']"
+                class="text-gray-400 transition group-hover:text-orange-500"
+              />
               New Folder
             </button>
-            <button class="btn-primary flex gap-2">
-              <svg
-                class="size-5 mr-1"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 640"
-              >
-                <path
-                  d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM296 408L296 344L232 344C218.7 344 208 333.3 208 320C208 306.7 218.7 296 232 296L296 296L296 232C296 218.7 306.7 208 320 208C333.3 208 344 218.7 344 232L344 296L408 296C421.3 296 432 306.7 432 320C432 333.3 421.3 344 408 344L344 344L344 408C344 421.3 333.3 432 320 432C306.7 432 296 421.3 296 408z"
-                />
-              </svg>
+
+            <button
+              class="btn group flex items-center gap-2 border border-gray-300 bg-white px-4 py-2 text-gray-500 transition hover:border-orange-500 hover:text-orange-500"
+            >
+              <FontAwesomeIcon
+                :icon="['fas', 'circle-plus']"
+                class="text-gray-400 transition group-hover:text-orange-500"
+              />
               Upload files
             </button>
+
             <button
-              class="btn-primary bg-white !text-gray-400 border-solid border-2 border-black-500 rounded-full flex gap-2"
+              class="btn btn-primary relative z-0 bg-white !text-gray-400 border-solid border-2 border-black-500 rounded-full flex gap-2"
             >
               <svg
                 class="size-5 mr-1"
@@ -119,18 +114,6 @@
             />
           </div>
 
-          <!-- filer bar grid -->
-
-          <div
-            class="grid grid-cols-[120px_2fr_60px_60px_200px] items-center px-5 py-1 border-b text-sm text-gray-600"
-          >
-            <input type="checkbox" class="justify-self-start" />
-            <span class="font-medium">File name</span>
-            <span>Kind</span>
-            <span>Size</span>
-            <span>Added / Modified</span>
-          </div>
-
           <AssetView
             :assets="assets"
             :view-mode="viewMode"
@@ -139,7 +122,7 @@
           />
         </div>
 
-        <div class="col-span-1">
+        <div class="col-span-3">
           <SideBar :asset="selectedAsset" />
         </div>
       </div>

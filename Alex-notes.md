@@ -2,18 +2,27 @@
 
 ### ToDos
 
-- Hover grey BG for row/grid download buttons
 - Margin for all items to replace m-5 class
-- All button hover states
 - remove Bg white class
-- tidy up ... elipses for end of rows
+- tidy up ... elipses for end of rows and grid
+- Modal assume show file name ..? remove - 'asset.image_name'
+
+```html
+<div>
+  <p class="text-white text-lg font-semibold">
+    {{ asset.image_name || asset.image_path.split('/').pop() }}
+  </p>
+</div>
+```
+
+- Error handling
+- CSS review - consolidate
 
 ### General Notes
 
 - Tailwind install error reverted to version 3
-- no free font awesome for 'circle-plus' icon, used black one
 - 'Added / Modified' is a Computed value, this is a derived value as the data is manipulated.
-- thumbnails sizing columns / header columns tricky to ready on Figma
+- thumbnails sizing columns / header columns tricky to read on Figma
 - Group class used for on hover of each bar to diplay hidden attributes
 - Tick box tricky made custom check box:
 
@@ -44,8 +53,6 @@
 - Clicking a row toggles selection: background becomes grey, and the checkbox plus icons remain visible.
 
 ### Side bar logic
-
--
 
 ```js
 const selectedId = ref<number | null>(null) // store which row is selected iff null show default sidebar

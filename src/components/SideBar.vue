@@ -3,29 +3,35 @@
     <h3 class="text-lg text-[#FF5300] uppercase pb-8 pt-4">Quasar branding</h3>
     <div class="p-4">
       <div v-if="props.asset">
-        <p>File info</p>
+        <p class="font-bold mb-6">File info</p>
         <hr />
-        <div class="flex items-center">
-          <p>
+        <div class="flex items-center mt-4">
+          <!-- Left-aligned text -->
+          <p class="font-bold">
             {{
               props.asset.image_name || props.asset.image_path.split('/').pop()
             }}
           </p>
-          <FontAwesomeIcon
-            :icon="['far', 'heart']"
-            :class="[
-              'ml-auto px-8 text-lg cursor-pointer transition-all duration-200 ease-in-out hover:scale-125',
-              props.asset.favourited ? 'text-orange-500' : 'text-gray-400',
-            ]"
-          />
-          <img
-            class="cursor-pointer ml-4 w-[32px] transition-opacity duration-500 ease-in-out"
-            src="../assets/Download.svg"
-            :alt="props.asset.image_name || 'Asset ' + props.asset.id"
-          />
+
+          <!-- Right-aligned icons -->
+          <div class="ml-auto flex items-center">
+            <FontAwesomeIcon
+              :icon="['far', 'heart']"
+              :class="[
+                'text-lg cursor-pointer transition-all duration-200 ease-in-out hover:scale-125',
+                props.asset.favourited ? 'text-orange-500' : 'text-gray-400',
+              ]"
+            />
+
+            <img
+              class="cursor-pointer w-[32px] transition-opacity duration-500 ease-in-out"
+              src="../assets/Download.svg"
+              :alt="props.asset.image_name || 'Asset ' + props.asset.id"
+            />
+          </div>
         </div>
 
-        <div class="flex text-[12px] text-gray-600 gap-4">
+        <div class="flex text-[12px] text-gray-600 gap-4 mb-4 mt-1">
           <span class="uppercase">{{ props.asset.file_type }}</span
           ><span>{{ (props.asset.file_size / 1000000).toFixed(1) }}MB</span>
           <span
@@ -58,13 +64,13 @@
           @close="modalOpen = false"
         />
 
-        <h4 class="mb-0 font-bold">Tags</h4>
+        <h4 class="font-bold my-4">Tags</h4>
         <div v-if="props.asset.tags.length">
-          <ul class="flex flex-wrap gap-2 text-[12px] mb-4">
+          <ul class="flex flex-wrap gap-2 text-[12px] my-4">
             <li
               v-for="tag in props.asset.tags"
               :key="tag"
-              class="flex items-center gap-1 rounded-full bg-gray-200 px-3 py-1"
+              class="flex items-center gap-1 rounded-full bg-gray-200 px-3 py-1 capitalize"
             >
               {{ tag }}
               <button
@@ -78,10 +84,10 @@
         </div>
         <div v-else><p>No Tags set</p></div>
         <hr />
-        <h4 class="mb-0 font-bold">Description</h4>
+        <h4 class="font-bold my-4">Description</h4>
         <p>{{ props.asset.description }}</p>
         <hr />
-        <h4 class="mb-0 font-bold">File History</h4>
+        <h4 class="mb-0 font-bold mt-4">File History</h4>
 
         <small
           >Date added: <DateFormat :value="props.asset.updated_at"
